@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELEMENT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <div>
+        <p class="eyebrow">KOREA UNIVERSITY HIGH SCHOOL</p>
+        <h1>ELEMENT</h1>
+      </div>
+      <div class="status-group">
+        <div class="status-pill" id="connectionState">연결 대기</div>
+        <div class="status-pill danger" id="zoneState">자기장 계산 중</div>
+        <div class="status-pill" id="countState">플레이어 0 / 10</div>
+      </div>
+    </header>
+
+    <main class="game-stage">
+      <canvas id="gameCanvas" width="1600" height="900"></canvas>
+      <aside class="overlay-panel scoreboard">
+        <h2>상태</h2>
+        <div class="meter-block">
+          <label>HP</label>
+          <div class="meter meter-hp"><span id="hpFill"></span></div>
+          <strong id="hpText">500 / 500</strong>
+        </div>
+        <div class="meter-block electric-only">
+          <label>Battery</label>
+          <div class="meter meter-battery"><span id="batteryFill"></span></div>
+          <strong id="batteryText">100 / 100</strong>
+        </div>
+        <div class="meter-block">
+          <label>자기장</label>
+          <strong id="zoneText">-</strong>
+        </div>
+        <div class="help-text">
+          이동: WASD / 방향키<br />
+          사용: 1-7 / 삭제: Shift+1-7<br />
+          카드 수집: 가까이 가면 자동, 직접 요청도 전송
+        </div>
+      </aside>
+    </main>
+
+    <footer class="hotbar-wrap">
+      <div class="hotbar" id="hotbar"></div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='js/client.js') }}"></script>
+</body>
+</html>
